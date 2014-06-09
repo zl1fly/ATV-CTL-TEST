@@ -21,11 +21,11 @@ def process_string(string_to_process):
   #print(words[0]+"\n")
   #print(words[1]+"\n")
   what = words[0]
-  parameter = words[1]
+  param = words[1]
   if what == "a:":
-    humidity = parameter
+    humidity = para
   if what == "b:":
-    temp = parameter   
+    temp = para   
   return
 
 def write_to_db():
