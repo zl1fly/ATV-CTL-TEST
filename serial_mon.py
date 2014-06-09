@@ -50,6 +50,7 @@ while 1:
       #Process the string
       process_string(complete_string)
       complete_string = ""
+      write_to_db()
     #Otherwise concatenate the string
     else:
       complete_string = complete_string + value
