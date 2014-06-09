@@ -23,10 +23,12 @@ def process_string(string_to_process):
   if words[0] == "a:":
     print(words[0]+"\n")
     print(words[1]+"\n")
+    global humidity
     humidity = float(words[1])
   if words[0] == "b:":
     print(words[0]+"\n")
     print(words[1]+"\n")
+    global temp
     temp = float(words[1])
   return
 
@@ -35,6 +37,7 @@ def write_to_db():
     print("Temperature = "+str(temp)+"C")
     return
 
+# Main program starts here.
 # Enter a while true loop
 while 1:
     
