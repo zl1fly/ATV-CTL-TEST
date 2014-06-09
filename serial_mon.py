@@ -10,11 +10,6 @@ port = "/dev/ttyACM0"
 # Set up the serial port 9600 (8N1=Default)
 ser = serial.Serial(port,9600)
 
-#Initialise variables.
-complete_string = ""
-humidity = 0
-temp = 0
-
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
@@ -37,6 +32,11 @@ def write_to_db():
 
 # Enter a while true loop
 while 1:
+    #Initialise variables.
+    complete_string = ""
+    humidity = 0
+    temp = 0
+    
     # Read from the serial port
     value = ser.read()
 
@@ -46,7 +46,6 @@ while 1:
       #Process the string
       process_string(complete_string)
       complete_string = ""
-      write_to_db()
     #Otherwise concatenate the string
     else:
       complete_string = complete_string + value
