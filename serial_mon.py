@@ -21,14 +21,11 @@ def process_string(string_to_process):
   #print(words[0]+"\n")
   #print(words[1]+"\n")
   what = words[0]
-  param = words[1]
-  print(what)
-  print(param)
-#  if what == "a:":
-#   humidity = float(para)
-#  if what == "b:":
-#    temp = float(para)   
-#  return
+  if what == "a:":
+    humidity = float(words[1])
+  if what == "b:":
+    temp = float(words[1])   
+  return
 
 def write_to_db():
     print("Humidity = "+str(humidity)+"%")
