@@ -38,6 +38,7 @@ def process_string(string_to_process):
 
 def write_to_db():
     global dbupdate
+    dbupdate = dbupdate + 1
     if dbupdate == 60:
         print("Humidity = "+str(humidity)+"%")
         print("Temperature = "+str(temp)+"C")
