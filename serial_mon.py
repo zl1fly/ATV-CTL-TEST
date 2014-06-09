@@ -72,18 +72,18 @@ def write_to_db():
             (%f, %f, now()); " % \
             (temp, humidity)
             print(sql)
-            #try:
-                cursor.excute(sql)
+            try:
+                cursor.execute(sql)
                 db.commit()
-            #except:
-            #    db.rollback()
+            except:
+                db.rollback()
+    #must remember to close the DB always...
     db.close()            
     return
 
 # Main program starts here.
 # Enter a while true loop
 while 1:
-    
     # Read from the serial port
     value = ser.read()
 
