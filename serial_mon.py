@@ -74,17 +74,21 @@ def write_to_db():
             print("Temperature = "+str(temp)+"C")
             #reset the DB flag to 0
             dbupdate = 0
-            #build the sql string
+            
+            #build the sql string inserting the values
             sql = "INSERT INTO cabin_values \
             (temp, humidity, time) VALUES \
             (%f, %f, now()); " % \
             (temp, humidity)
-            print(sql)
+            
+            # Try to execute the SQL, If it fails roll back the SQL code and 
+            # do not commit
             try:
                 cursor.execute(sql)
                 db.commit()
             except:
                 db.rollback()
+    
     #must remember to close the DB always...
     db.close()            
     return
