@@ -28,9 +28,9 @@ def process_string(string_to_process):
     temp = parameter   
   return
 
-def write_to_db()
-    print("Humidity = "+humidity+"%")
-    print("Temperature = "+temp+"C")
+def write_to_db():
+    print("Humidity = "+str(humidity)+"%")
+    print("Temperature = "+str(temp)+"C")
     return
 
 # Enter a while true loop
@@ -44,7 +44,7 @@ while 1:
       #Process the string
       process_string(complete_string)
       complete_string = ""
-      write_to_db
+      write_to_db()
     #Otherwise concatenate the string
     else:
       complete_string = complete_string + value
