@@ -68,15 +68,15 @@ def write_to_db():
             dbupdate = 0
             #build the sql string
             sql = "INSERT INTO cabin_values \
-            (temp, humidity, timestamp) VALUES \
-            (%f, %f, now()) " % \
+            (temp, humidity, time) VALUES \
+            (%f, %f, now()); " % \
             (temp, humidity)
             print(sql)
-            try:
+            #try:
                 cursor.excute(sql)
                 db.commit()
-            except:
-                db.rollback()
+            #except:
+            #    db.rollback()
     db.close()            
     return
 
