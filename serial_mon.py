@@ -41,13 +41,18 @@ def process_string(string_to_process):
   return
 
 def write_to_db():
+    #use global var's
     global dbupdate
+    global humidity
+    global temp
+    
     # If there has been an update update the DB
     if dbupdate == 1:
-        print("Humidity = "+str(humidity)+"%")
-        print("Temperature = "+str(temp)+"C")
-        #reset the DB flag to 0
-        dbupdate = 0
+        if (temp != 0) and (humidity != 0):
+            print("Humidity = "+str(humidity)+"%")
+            print("Temperature = "+str(temp)+"C")
+            #reset the DB flag to 0
+            dbupdate = 0
     return
 
 # Main program starts here.
