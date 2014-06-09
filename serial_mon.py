@@ -18,6 +18,7 @@ temp = 0
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
+  
   #check to see if we are getting what we want otherwise it will crash
   if words[0] == "a:":
     print(words[0]+"\n")
@@ -45,7 +46,7 @@ while 1:
       #Process the string
       process_string(complete_string)
       complete_string = ""
-      #write_to_db()
+      write_to_db()
     #Otherwise concatenate the string
     else:
       complete_string = complete_string + value
