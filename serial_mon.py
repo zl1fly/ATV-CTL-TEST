@@ -1,3 +1,11 @@
+########################################################
+#
+# IMPORTANT THIS IS THE SQL to retrieve the latest entry
+# select * from cabin_values order by time DESC limit 1;
+#
+########################################################
+
+
 #Imports the serial lib's
 import serial
 
