@@ -18,8 +18,8 @@ temp = 0
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
-  #print(words[0]+"\n")
-  #print(words[1]+"\n")
+  print("."+words[0]+".\n")
+  print("."+words[1]+".\n")
   what = words[0]
   if what == "a:":
     humidity = float(words[1])
