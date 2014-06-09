@@ -23,9 +23,9 @@ def process_string(string_to_process):
   what = words[0]
   param = words[1]
   if what == "a:":
-    humidity = para
+    humidity = float(para)
   if what == "b:":
-    temp = para   
+    temp = float(para)   
   return
 
 def write_to_db():
