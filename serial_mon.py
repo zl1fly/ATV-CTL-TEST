@@ -38,8 +38,10 @@ def process_string(string_to_process):
 
 def write_to_db():
     global dbupdate
+    # Add one to the counter
     dbupdate = dbupdate + 1
-    if dbupdate == 60:
+    # If we hit 6 iterations 3(seconds +-) then print values
+    if dbupdate == 6:
         print("Humidity = "+str(humidity)+"%")
         print("Temperature = "+str(temp)+"C")
         dbupdate = 0
