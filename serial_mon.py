@@ -1,8 +1,20 @@
+########################################################
+#
+# IMPORTANT THIS IS THE SQL to retrieve the latest entry
+# select * from cabin_values order by time DESC limit 1;
+#
+########################################################
+
+
 #Imports the serial lib's
 import serial
 
 #Import the string handling lib's
 import string
+
+#Import the mysql lib's
+import MySQLdb
+
 
 # Port and speed settings
 port = "/dev/ttyACM0"
@@ -12,6 +24,11 @@ complete_string = ""
 humidity = 0
 temp = 0
 dbupdate = 0
+
+#database values
+database = "yourdb"
+db_user = "youruser"
+db_pass = "yourpassword"
 
 # Set up the serial port 9600 (8N1=Default)
 ser = serial.Serial(port,9600)
@@ -46,6 +63,10 @@ def write_to_db():
     global humidity
     global temp
     
+    db = MySQLdb.connect("localhost", db_user, db_pass, database)
+    cursor = db.cursor()
+    
+
     # If there has been an update update the DB
     if dbupdate == 1:
         if (temp != 0) and (humidity != 0):
@@ -53,12 +74,28 @@ def write_to_db():
             print("Temperature = "+str(temp)+"C")
             #reset the DB flag to 0
             dbupdate = 0
+            
+            #build the sql string inserting the values
+            sql = "INSERT INTO cabin_values \
+            (temp, humidity, time) VALUES \
+            (%f, %f, now()); " % \
+            (temp, humidity)
+            
+            # Try to execute the SQL, If it fails roll back the SQL code and 
+            # do not commit
+            try:
+                cursor.execute(sql)
+                db.commit()
+            except:
+                db.rollback()
+    
+    #must remember to close the DB always...
+    db.close()            
     return
 
 # Main program starts here.
 # Enter a while true loop
 while 1:
-    
     # Read from the serial port
     value = ser.read()
 
