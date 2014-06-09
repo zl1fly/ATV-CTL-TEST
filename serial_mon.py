@@ -18,13 +18,8 @@ temp = 0
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
-  print("."+words[0]+".\n")
-  print("."+words[1]+".\n")
-  what = words[0]
-  if what == "a:":
-    humidity = float(words[1])
-  if what == "b:":
-    temp = float(words[1])   
+  print(words[0]+"\n")
+  print(words[1]+"\n")
   return
 
 def write_to_db():
@@ -43,7 +38,7 @@ while 1:
       #Process the string
       process_string(complete_string)
       complete_string = ""
-      write_to_db()
+      #write_to_db()
     #Otherwise concatenate the string
     else:
       complete_string = complete_string + value
