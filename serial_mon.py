@@ -18,9 +18,8 @@ temp = 0
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
-  if words[0] != "a:":
-    if words[0] != "b:":
-        print("no joy")
+  if (words[0] != "a:") || (words[0] != "b:"):
+    print("no joy")
   else:
     print(words[0]+"\n")
     print(words[1]+"\n")
