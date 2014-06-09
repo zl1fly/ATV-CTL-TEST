@@ -19,7 +19,7 @@ dbupdate = 0
 
 #database values
 database = "yourdb"
-user = "youruser"
+db_user = "youruser"
 db_pass = "yourpassword"
 
 # Set up the serial port 9600 (8N1=Default)
@@ -71,6 +71,7 @@ def write_to_db():
             (temp, humidity, timestamp) VALUES \
             ('%f', '%f', now()) " % \
             (temp, humidity)
+            print(sql)
             try:
                 cursor.excute(sql)
                 db.commit()
