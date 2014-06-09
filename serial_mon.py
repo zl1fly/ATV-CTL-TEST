@@ -22,28 +22,31 @@ def process_string(string_to_process):
   #use the global values
   global humidity
   global temp
-  
+  global dbupdate
+    
   #check to see if we are getting what we want otherwise it will crash
   if words[0] == "a:":
     #if the value has changed since the last time update the global value
     if humidity != float(words[1]):
         humidity = float(words[1])
+        # if the value has changed set the DB update flag
+        dbupdate = 1   
   
   if words[0] == "b:":    
     #if the value has changed since the last time update the global value
     if temp != float(words[1]):
         temp = float(words[1])
-  
+        # if the value has changed set the DB update flag
+        dbupdate = 1
   return
 
 def write_to_db():
     global dbupdate
-    # Add one to the counter
-    dbupdate = dbupdate + 1
-    # If we hit 6 iterations 3(seconds +-) then print values
-    if dbupdate == 6:
+    # If there has been an update update the DB
+    if dbupdate == 1:
         print("Humidity = "+str(humidity)+"%")
         print("Temperature = "+str(temp)+"C")
+        #reset the DB flag to 0
         dbupdate = 0
     return
 
