@@ -18,18 +18,26 @@ ser = serial.Serial(port,9600)
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
+  #use the global values
+  global humidity
+  global temp
   
   #check to see if we are getting what we want otherwise it will crash
   if words[0] == "a:":
     print(words[0]+"\n")
     print(words[1]+"\n")
-    global humidity
-    humidity = float(words[1])
+    #if the value has changed since the last time update the global value
+    if humidity != float(words[1]):
+        humidity = float(words[1])
+  
   if words[0] == "b:":
     print(words[0]+"\n")
     print(words[1]+"\n")
-    global temp
-    temp = float(words[1])
+    
+    #if the value has changed since the last time update the global value
+    if temp != float(words[1]):
+        temp = float(words[1])
+  
   return
 
 def write_to_db():
