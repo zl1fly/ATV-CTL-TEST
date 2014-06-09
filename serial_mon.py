@@ -7,6 +7,11 @@ import string
 # Port and speed settings
 port = "/dev/ttyACM0"
 
+#Initialise variables.
+complete_string = ""
+humidity = 0
+temp = 0
+
 # Set up the serial port 9600 (8N1=Default)
 ser = serial.Serial(port,9600)
 
@@ -32,10 +37,6 @@ def write_to_db():
 
 # Enter a while true loop
 while 1:
-    #Initialise variables.
-    complete_string = ""
-    humidity = 0
-    temp = 0
     
     # Read from the serial port
     value = ser.read()
