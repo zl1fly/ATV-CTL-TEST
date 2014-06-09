@@ -18,12 +18,15 @@ temp = 0
 #function to split the string and work out which value to update
 def process_string(string_to_process):
   words = string.split(string_to_process)
+  #check to see if we are getting what we want otherwise it will crash
   if words[0] == "a:":
     print(words[0]+"\n")
     print(words[1]+"\n")
+    humidity = float(words[1])
   if words[0] == "b:":
     print(words[0]+"\n")
     print(words[1]+"\n")
+    temp = float(words[1])
   return
 
 def write_to_db():
