@@ -69,7 +69,7 @@ def write_to_db():
             #build the sql string
             sql = "INSERT INTO cabin_values \
             (temp, humidity, timestamp) VALUES \
-            ('%f', '%f', now()) " % \
+            (%f, %f, now()) " % \
             (temp, humidity)
             print(sql)
             try:
