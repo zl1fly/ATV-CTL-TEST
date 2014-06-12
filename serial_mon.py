@@ -55,6 +55,9 @@ def process_string(string_to_process):
         temp = float(words[1])
         # if the value has changed set the DB update flag
         dbupdate = 1
+
+# Add more fields here when required, if you have more fields or add more fields later.        
+ 
   return
 
 def write_to_db():
