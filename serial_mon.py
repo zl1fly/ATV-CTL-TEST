@@ -92,7 +92,7 @@ def write_to_db():
             
             #build the sql string inserting the values
             sql = "INSERT INTO cabin_values \
-            (temp, humidity, time) VALUES \
+            (temp, humidity, voltage, time) VALUES \
             (%f, %f, %f, now()); " % \
             (temp, humidity, real_voltage)
             
