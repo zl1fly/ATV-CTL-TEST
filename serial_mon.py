@@ -24,7 +24,7 @@ complete_string = ""
 humidity = 0
 temp = 0
 dbupdate = 0
-24v_voltage = 0
+battery_voltage = 0
 
 
 #database values
@@ -42,7 +42,7 @@ def process_string(string_to_process):
     global humidity
     global temp
     global dbupdate
-    global 24v_voltage
+    global battery_voltage
     
     #check to see if we are getting what we want otherwise it will crash
     if words[0] == "a:":
@@ -60,8 +60,8 @@ def process_string(string_to_process):
             dbupdate = 1
         
     if words[0] == "c:":
-        if 24v_voltage != int(words[1])
-            24v_voltage = int(words[1])
+        if battery_voltage != int(words[1])
+            battery_voltage = int(words[1])
             dbupdate = 1 
 
 # Add more fields here when required, if you have more fields or add more fields later.        
@@ -73,7 +73,7 @@ def write_to_db():
     global dbupdate
     global humidity
     global temp
-    global 24v_voltage
+    global battery_voltage
     
     db = MySQLdb.connect("localhost", db_user, db_pass, database)
     cursor = db.cursor()
@@ -84,7 +84,8 @@ def write_to_db():
         if (temp != 0) and (humidity != 0) and (24v_voltage != 0):
             print("Humidity = "+str(humidity)+"%")
             print("Temperature = "+str(temp)+"C")
-            real_voltage = ((5/1024) * 24v_voltage) * 7
+            print(str(battery_voltage))
+            real_voltage = (((5/1024) * battery_voltage) * 7)
             print("Voltage = "+str(real_voltage)+"V")
             
             #reset the DB flag to 0
