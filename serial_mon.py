@@ -64,9 +64,9 @@ def process_string(string_to_process):
             battery_voltage = int(words[1])
             dbupdate = 1 
 
-# Add more fields here when required, if you have more fields or add more fields later.        
+    # Add more fields here when required, if you have more 
+    # fields or add more fields later.        
  
-  return
 
 def write_to_db():
     #use global var's
@@ -81,11 +81,10 @@ def write_to_db():
 
     # If there has been an update update the DB
     if dbupdate == 1:
-        if (temp != 0) and (humidity != 0) and (24v_voltage != 0):
+        if (temp != 0) and (humidity != 0) and (battery_voltage != 0):
             print("Humidity = "+str(humidity)+"%")
             print("Temperature = "+str(temp)+"C")
-            print(str(battery_voltage))
-            real_voltage = (((5/1024) * battery_voltage) * 7)
+            real_voltage = float(float(battery_voltage)*(0.00488758553275)*7)
             print("Voltage = "+str(real_voltage)+"V")
             
             #reset the DB flag to 0
@@ -93,9 +92,9 @@ def write_to_db():
             
             #build the sql string inserting the values
             sql = "INSERT INTO cabin_values \
-            (temp, humidity, time) VALUES \
-            (%f, %f, now()); " % \
-            (temp, humidity)
+            (temp, humidity, voltage, time) VALUES \
+            (%f, %f, %f, now()); " % \
+            (temp, humidity, real_voltage)
             
             # Try to execute the SQL, If it fails roll back the SQL code and 
             # do not commit
