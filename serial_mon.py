@@ -60,7 +60,7 @@ def process_string(string_to_process):
             dbupdate = 1
         
     if words[0] == "c:":
-        if battery_voltage != int(words[1])
+        if battery_voltage != int(words[1]):
             battery_voltage = int(words[1])
             dbupdate = 1 
 
