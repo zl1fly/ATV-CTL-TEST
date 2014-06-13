@@ -64,9 +64,9 @@ def process_string(string_to_process):
             battery_voltage = int(words[1])
             dbupdate = 1 
 
-# Add more fields here when required, if you have more fields or add more fields later.        
+    # Add more fields here when required, if you have more 
+    # fields or add more fields later.        
  
-  return
 
 def write_to_db():
     #use global var's
@@ -81,7 +81,7 @@ def write_to_db():
 
     # If there has been an update update the DB
     if dbupdate == 1:
-        if (temp != 0) and (humidity != 0) and (24v_voltage != 0):
+        if (temp != 0) and (humidity != 0) and (battery_voltage != 0):
             print("Humidity = "+str(humidity)+"%")
             print("Temperature = "+str(temp)+"C")
             print(str(battery_voltage))
