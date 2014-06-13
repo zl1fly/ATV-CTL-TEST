@@ -84,8 +84,7 @@ def write_to_db():
         if (temp != 0) and (humidity != 0) and (battery_voltage != 0):
             print("Humidity = "+str(humidity)+"%")
             print("Temperature = "+str(temp)+"C")
-            print(str(battery_voltage))
-            real_voltage = (((5/1024) * battery_voltage) * 7)
+            real_voltage = float(float(battery_voltage)*(0.00488758553275)*7)
             print("Voltage = "+str(real_voltage)+"V")
             
             #reset the DB flag to 0
@@ -94,8 +93,8 @@ def write_to_db():
             #build the sql string inserting the values
             sql = "INSERT INTO cabin_values \
             (temp, humidity, time) VALUES \
-            (%f, %f, now()); " % \
-            (temp, humidity)
+            (%f, %f, %f, now()); " % \
+            (temp, humidity, real_voltage)
             
             # Try to execute the SQL, If it fails roll back the SQL code and 
             # do not commit
